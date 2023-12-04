@@ -1,0 +1,21 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+
+\begin{document}
+
+% Replace this with the name of the file containing the data you want plotted.
+\pgfplotstableread{sol.dat}{\plotdata} 
+
+\begin{tikzpicture}[scale=1]
+\begin{axis}[minor tick num=1,xlabel={Time (days)}, ylabel=Cases, legend pos=outer north east]
+\addplot [black,very thick] table [x index=0, y index=1] {\plotdata};
+\addplot [orange,very thick] table [x index=0, y index=2] {\plotdata};
+\addplot [blue,very thick] table [x index=0, y index=3] {\plotdata};
+\addplot [green,very thick] table [x index=0, y index=4] {\plotdata};
+\addplot [red,very thick] table [x index=0, y index=5] {\plotdata};
+\legend{S, I, Q, R, D}
+\end{axis}
+\end{tikzpicture}
+\end{document}
